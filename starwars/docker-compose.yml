@@ -1,0 +1,23 @@
+version: '3.5'
+services:
+  bd:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=starwar
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+    ports:
+      - 3306
+  starwars:
+    image: rogeriolemosc/star-wars
+    environment:
+      - DATABASE_HOST=bd
+      - DATABASE_USER=root
+      - DATABASE_NAME=starwar
+      - DATABASE_PASSWORD=root
+      - DATABASE_PORT=3306
+    depends_on:
+      - bd
+    ports:
+      - 8082:8081
