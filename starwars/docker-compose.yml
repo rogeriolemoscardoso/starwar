@@ -1,7 +1,8 @@
-version: '3.5'
+version: '3.7'
 services:
   bd:
     image: mysql:latest
+    container_name: bd
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=starwar
@@ -11,6 +12,7 @@ services:
       - 3306
   starwars:
     image: rogeriolemosc/star-wars
+    container_name: starwars
     environment:
       - DATABASE_HOST=bd
       - DATABASE_USER=root
